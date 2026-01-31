@@ -13,6 +13,16 @@ public class PlayerMovement : MonoBehaviour
         // Gerak kiri / kanan (A, D)
         float move = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
+        
+        // Flip karakter
+        if (move > 0)
+        {
+            transform.localScale = new Vector3(3, 3, 1);
+        }
+        else if (move < 0)
+        {
+            transform.localScale = new Vector3(-3, 3, 1);
+        }
 
         // Lompat (Space)
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
